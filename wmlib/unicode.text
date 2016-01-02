@@ -1,0 +1,46 @@
+/******************************************************************************
+ *    FileName: unicode.c
+ *      Author: Mr.sancho
+ *        Date: 2014年6月10日
+ * Description: 汉字Unicode编码的区间为:0x4E00→0x9FA5
+ *
+ *****************************************************************************/
+#ifdef __cpluscplus
+extern "C" {
+#endif
+
+/* standard head files */
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+/* common lib head files */
+#include <basetype.h>
+
+/* project head files */
+
+INT main(INT iArgs, CHAR **ppArgv)
+{
+    FILE *pstFile;
+    USHORT usUnicode;
+    USHORT usNewLine = 0x0A;
+
+    pstFile = fopen("./unicode.txt", "w");
+    if (NULL == pstFile)
+    {
+        return 0;
+    }
+
+    for (usUnicode = 0x4e00; usUnicode <= 0x9fa5; usUnicode++)
+    {
+        fwrite(&usUnicode, sizeof(USHORT), 1, pstFile);
+        fwrite(&usNewLine, sizeof(USHORT), 1, pstFile);
+    }
+
+    fclose(pstFile);
+    return 0;
+}
+
+#ifdef __cpluscplus
+}
+#endif

@@ -1,0 +1,2 @@
+CAManager: CAManager.c
+	gcc -o CAManager -g CAManager.c -I../ca-8-5-1-linux-x86-64/sdk/common -DUNIX_64 -L../ca-8-5-1-linux-x86-64/redist -lsc_ca -lsc_da -m64 -D_LINUX64_SOURCE -lm  -DUNIX -Wl,-rpath,../ca-8-5-1-linux-x86-64/redist,-rpath,./lib
